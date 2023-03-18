@@ -25,24 +25,22 @@ void PrintMatrix(int[,] matrix)
     }
 }
 
-int[,] SquareIndexesEven(int[,] array)
+int DiagonalSum(int[,] array)
 {
-    for (int i = 0; i < array.GetLength(0); i+=2)
+    int sum = 0;
+    for (int i = 0; i < array.GetLength(0); i++)
     {
-        for (int j = 0; j < array.GetLength(1); j+=2)
+        for (int j = 0; j < array.GetLength(1); j++)
         {
-            array[i,j] *= array[i,j];
+            if(i==j) sum+=array[i,j];
         }
     }
-    return array;
+    return sum;
 }
 
-int[,] newArray = CreateMatrix(3,5,1,100);
+int[,] newArray = CreateMatrix(3,5,1,10);
 PrintMatrix(newArray);
 
-Console.WriteLine();
-
-SquareIndexesEven(newArray);
-PrintMatrix(newArray);
-
+int summary = DiagonalSum(newArray);
+Console.WriteLine(summary);
 
